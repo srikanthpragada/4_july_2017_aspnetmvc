@@ -1,7 +1,8 @@
 ﻿@model mvcdemo.Models.Person
 
 @{
-    Layout = null;
+    var i = 10;
+    var msg = "<h1>Hello!</h1>";
 }
 
 <!DOCTYPE html>
@@ -12,8 +13,11 @@
     <title>Info</title>
 </head>
 <body>
+   
    <h1>Information</h1>
    <h3>@Model.Name </h3>
    <h4>@Model.Email </h4>
+
+   Name : @Request["name"]
 </body>
 </html>

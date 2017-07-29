@@ -1,0 +1,41 @@
+﻿@model IEnumerable<mvcdemo.Models.Product>
+
+@{
+    Layout = null;
+}
+
+<!DOCT YPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table border="1">
+        <tr>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Price
+            </th>
+        </tr>
+    
+    @foreach (var prod in Model) {
+        <tr>
+            <td>
+                @prod.ProdName
+            </td>
+            <td>
+                @prod.Price
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

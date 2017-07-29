@@ -19,7 +19,7 @@ namespace mvcdemo.Controllers
         public ActionResult Info()
         {
            var person = new Person { Name = "Scott", Email = "scott@microsoft.com" };
-           return View(person);
+           return View(person);  // send model to view 
         }
 
 

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<mvcdemo.Models.Course>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List Of Courses</title>
+</head>
+<body>
+    <h1>List Of Courses</h1>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table border="1" cellpadding="5px">
+        <tr style="background-color:red; color:white; font-weight: bold;">
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var course in Model) {
+        <tr>
+            <td>
+                @course.Name
+            </td>
+            <td>
+                @course.Duration
+            </td>
+            <td>
+                @course.Price
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id= course.Id }) 
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
