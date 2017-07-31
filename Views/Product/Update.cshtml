@@ -1,0 +1,43 @@
+﻿@model mvcdemo.Models.UpdateViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Update Price</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <style>
+        .input-validation-error { color : red}
+    </style>
+
+</head>
+<body>
+    <h2>Update Product Price</h2>
+    @using (Html.BeginForm())
+    {
+                <div>Product Id</div>
+                <div>
+                    @Html.EditorFor(model => model.ProdId)
+                    @Html.ValidationMessageFor(model => model.ProdId, "", new { @class = "text-danger" })
+                </div>
+                <p></p>
+            
+                <div>New Price</div>
+                <div>
+                    @Html.EditorFor(model => model.NewPrice)
+                    @Html.ValidationMessageFor(model => model.NewPrice, "", new { @class = "text-danger" })
+                </div>
+                <p></p>
+                <input type="submit" value="Update"  />
+                <p></p>
+                <div> @ViewBag.Message</div>
+    }
+    
+</body>
+</html>

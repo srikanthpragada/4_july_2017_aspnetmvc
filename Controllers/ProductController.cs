@@ -10,7 +10,7 @@ namespace mvcdemo.Controllers
 {
     public class ProductController : Controller
     {
-         
+
         public ActionResult Index()
         {
             List<Product> prods = new List<Product>();
@@ -35,6 +35,27 @@ namespace mvcdemo.Controllers
 
             return View(prods);
 
+        }
+
+        [HttpGet]
+        public ActionResult Update()
+        {
+            UpdateViewModel model = new UpdateViewModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Update(UpdateViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // update 
+                ViewBag.Message = String.Format("Update product {0} with price {1} successfully!", model.ProdId, model.NewPrice);
+            }
+            else
+                ViewBag.Message = "";
+
+            return View(model);
         }
     }
 }

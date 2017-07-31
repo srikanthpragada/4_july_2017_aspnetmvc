@@ -16,6 +16,8 @@ namespace mvcdemo.Controllers
             return View(MemoryCourses.Courses);
         }
 
+       
+
         public ActionResult Details(int id)
         {
             Course course = null; 
