@@ -16,8 +16,6 @@ namespace mvcdemo.Controllers
             return View(MemoryCourses.Courses);
         }
 
-       
-
         public ActionResult Details(int id)
         {
             Course course = null; 
@@ -33,5 +31,36 @@ namespace mvcdemo.Controllers
 
             return View(course);
         }
+
+        [HttpGet]
+        public ActionResult Calculate()
+        {
+            CourseViewModel model = new CourseViewModel();
+            model.Timings = "e";
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Calculate(CourseViewModel model)
+        {
+
+            // Request.Form["timings"]
+
+            int fee = Int32.Parse(model.CourseFee);
+
+            if (model.Timings == "m")
+                fee = fee * 90 /100;
+            else
+                if( model.Timings == "a")
+                   fee = fee * 80 / 100;
+
+            if (model.CourseMaterial)
+                fee += 500;
+
+            ViewBag.Fee = fee;
+
+            return View(model);
+        }
+
     }
 }

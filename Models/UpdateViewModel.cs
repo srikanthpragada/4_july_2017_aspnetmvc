@@ -11,7 +11,11 @@ namespace mvcdemo.Models
         [Range (1,1000, ErrorMessage = "Invaid product id!")]
         public int ProdId { get; set; }
 
+
         [Range(1, Double.MaxValue , ErrorMessage = "Invalid Price!")]
         public double NewPrice { get; set; }
+
+        [RegularExpression("^[0-9]{10}$", ErrorMessage = "Invalid Mobile Number. Please enter 10 digit number")]
+        public string MobileNumber { get; set; }
     }
 }

@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1>List Of Names</h1>
+    @if (Session["names"] != null)
+    {
+        foreach (string name in (SortedSet<string>)Session["names"])
+        {
+            <h3>@name</h3>
+        }
+    }
+    else
+    {
+        <h3>Sorry! No names found!</h3>
+    }
+</body>
+</html>

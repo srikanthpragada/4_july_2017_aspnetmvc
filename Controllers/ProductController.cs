@@ -10,16 +10,17 @@ namespace mvcdemo.Controllers
 {
     public class ProductController : Controller
     {
-
-        public ActionResult Index()
+        [OutputCache(Duration = 60)]
+        public ActionResult Index(int price)
         {
+            ViewBag.CreatedOn = DateTime.Now.ToLongTimeString(); 
             List<Product> prods = new List<Product>();
             using (SqlConnection con = new SqlConnection(
                 @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=msdb;Integrated Security=True"))
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("select * from products", con);
+                SqlCommand cmd = new SqlCommand("select * from products where price >=" + price, con);
                 SqlDataReader dr = cmd.ExecuteReader();
              
                 while (dr.Read())
