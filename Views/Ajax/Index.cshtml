@@ -1,0 +1,40 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ajax Demo</title>
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        function check() {
+            // make an ajax request 
+            $.get("/Ajax/UserExists?uname=" + $("#uname").val(), showResult);
+        }
+
+        function showResult(data) {
+          if(data === "yes")
+              $("#msg").text("Sorry! User already exists!");
+          else
+              $("#msg").text("");
+        }
+    </script>
+</head>
+<body>
+   <h2>Ajax Demo</h2>
+   Username : <input type="text" id="uname" onblur="check()" /> <span id="msg"></span>
+   <p/>
+   <input type="submit" value="Register" />
+
+   <p/>
+   @Ajax.ActionLink("What is time now?","Now", 
+                       new AjaxOptions {  UpdateTargetId = "now"})
+   <h2 id="now"></h2>
+
+</body>
+</html>
