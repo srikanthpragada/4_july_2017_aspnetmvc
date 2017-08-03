@@ -146,6 +146,7 @@
     <Compile Include="Controllers\HelloController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,6 +206,9 @@
     <Content Include="Views\Session\Index.cshtml" />
     <Content Include="Views\Session\Add.cshtml" />
     <Content Include="Views\Ajax\Index.cshtml" />
+    <Content Include="Views\Product\Search.cshtml" />
+    <Content Include="Views\Product\SearchResult.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

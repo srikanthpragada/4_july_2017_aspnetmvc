@@ -1,0 +1,31 @@
+﻿@model IEnumerable<mvcdemo.Models.Product>
+
+
+<table border="1" cellpadding="5pt">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Catcode)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Catcode)
+        </td>
+    </tr>
+}
+
+</table>
