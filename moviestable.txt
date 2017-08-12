@@ -1,10 +1,10 @@
 ﻿create table Movies
-( Id      integer identity primary key,
-  Title   varchar(50) not null,
-  Casting varchar(100) not null,
-  Lang    char(1) not null,
-  ReleasedOn DateTime,
-  Rating  integer
+( Id           integer identity primary key,
+  Title        varchar(50) not null,
+  Casting      varchar(100) not null,
+  Lang         char(1) not null,
+  ReleasedOn   DateTime,
+  Rating       integer
 )
 
 

@@ -10,7 +10,7 @@
 
 </p>
 <table class="table">
-    <tr>
+    <tr class="colhead">
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -38,17 +38,18 @@
             @Html.DisplayFor(modelItem => item.Casting)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Lang)
+            @mvcdemo.Models.MovieUtilities.GetLanguage(item.Lang)
+        </td>
+        <td style="text-align:center">
+            @item.ReleasedOn.ToString("dd/MM/yy")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ReleasedOn)
+            @mvcdemo.Models.MovieUtilities.GetRatingString(item.Rating)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rating)
-        </td>
-        <td>
+        <td style="text-align:center">
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id } ,
+                   new { onclick="return confirm('Do you really want to delete this movie?')" })
         </td>
     </tr>
 }
