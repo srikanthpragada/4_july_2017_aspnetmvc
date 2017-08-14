@@ -28,6 +28,9 @@ namespace mvcdemo
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/styles").Include("~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/jqueryui").Include(
+                      "~/Content/themes/base/all.css"));
         }
     }
 }

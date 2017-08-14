@@ -9,11 +9,20 @@ namespace mvcdemo.Controllers
 {
     public class MoviesController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string sortBy)
         {
             using (var ctx = new MoviesDbContext())
             {
                 var movies = ctx.Movies.ToList();
+                switch (sortBy)
+                {
+                    case "title": movies =  movies.OrderBy(m => m.Title).ToList(); break;
+                    case "casting": movies = movies.OrderBy(m => m.Casting).ToList(); break;
+                    case "lang": movies = movies.OrderBy(m => m.Lang).ToList(); break;
+                    case "releasedOn": movies = movies.OrderBy(m => m.ReleasedOn).ToList(); break;
+                    case "rating": movies = movies.OrderBy(m => m.Rating).ToList(); break;
+                }
+                
                 return View(movies);
             }
         }
@@ -136,6 +145,24 @@ namespace mvcdemo.Controllers
             }
 
 
+        }
+
+
+        public ActionResult Search()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Search(string moviename)
+        {
+            using (var ctx = new MoviesDbContext())
+            {
+                var movies = from m in ctx.Movies
+                             where m.Title.Contains(moviename)
+                             select m;
+
+                return PartialView("SearchResult", movies.ToList());
+            }
         }
 
     }

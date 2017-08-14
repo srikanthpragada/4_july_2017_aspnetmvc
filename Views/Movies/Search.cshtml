@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/MovieLayout.cshtml";
+}
+
+
+<h2>Search Movies</h2>
+
+@using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "movies" }))
+{
+  <span>Movie : </span> <input type="text" name="moviename" />
+  <input type="submit" value="Search" />
+  <p></p>
+  <div id="movies"></div>
+}
+
+@section scripts
+{
+  <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+}
+
+
+
+
