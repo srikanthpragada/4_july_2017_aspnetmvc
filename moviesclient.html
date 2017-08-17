@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-1.12.4.js"></script>
+    <title>Movies Client</title>
+    <script>
+        var BASEURL = "http://localhost:59306/api/MoviesApi";
+
+        function addMovie() {
+            var movie = {
+                "Title": $("#title").val(),
+                "Casting": $("#casting").val(),
+                "ReleasedOn": $("#releasedon").val(),
+                "Lang": $("#lang").val(),
+                "Rating": $("#rating").val()
+            };
+
+            $.ajax({
+                "url": BASEURL,
+                "data": movie,
+                "type": "post",
+                "success": added,
+                "error": displayError
+            });
+        }
+
+        function displayError(xhr, status, error) {
+            $("#message").text("Sorry! Could not complete task due to error!" + error);
+        }
+
+        function added() {
+            $("#message").text("Movie has been added sucessfully!");
+        }
+
+        function showMovies()
+        {
+            $.getJSON(BASEURL, displayMovies);
+        }
+
+        function displayMovies(movies) {
+            var html = "<table width='100%'><tr><th>Title </th><th>Casting</th><th>Released On</th><th>Lang</th><th>Rating</th></tr>";
+
+            $.each(movies,
+                  function (idx, movie) {
+                      html += "<tr><td>" + movie.Title + "</td>" +
+                          "<td>" + movie.Casting + "</td>" +
+                          "<td>" + movie.ReleasedOn + "</td>" +
+                          "<td>" + movie.Lang + "</td>" +
+                          "<td>" + movie.Rating + "</td></tr>"; 
+                  }
+            );
+
+            html += "</table>";
+
+            $("#movies").html(html);
+            $("#movies").css("visibility", "visible");
+        }
+
+        function hideMovies() {
+            $("#movies").css("visibility", "hidden");
+        }
+    </script>
+</head>
+<body>
+    <h1>Movie</h1>
+
+    <h4 id="message"></h4>
+
+    <h2>Add New Movie</h2>
+    <input type="text" id="title" placeholder="Title"/>
+    <input type="text" id="casting" placeholder="Casting" />
+    <input type="text" id="lang" placeholder="Lang" />
+    <input type="text" id="releasedon" placeholder="Released On" title="Date in dd/mm/yy" />
+    <input type="text" id="rating" placeholder="Rating"  title="Must be 1 to 5" />
+    <p></p>
+    <button onclick="addMovie()">Add Movie</button>
+    <p></p>
+    <button onclick="showMovies()">Show Movies</button>
+    <button onclick="hideMovies()">Hide Movies</button>
+    <p></p>
+    <div id="movies" style="visibility:hidden; background-color:lightgray">
+
+    </div>
+    
+</body>
+</html>
