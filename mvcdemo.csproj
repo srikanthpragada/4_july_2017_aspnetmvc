@@ -160,6 +160,7 @@
     <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HelloController.cs" />
+    <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
@@ -169,6 +170,7 @@
     </Compile>
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseViewModel.cs" />
+    <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\MemoryCourses.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MoviesDbContext.cs" />
@@ -283,6 +285,7 @@
     <Content Include="Views\Movies\showerror.cshtml" />
     <Content Include="Views\Movies\Search.cshtml" />
     <Content Include="Views\Movies\SearchResult.cshtml" />
+    <Content Include="Views\Mail\Send.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
